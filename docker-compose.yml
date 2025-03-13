@@ -1,0 +1,19 @@
+services:
+
+#### Container para Banco de Dados Transacional e Dimensional
+  postgres_liga_sudoers:
+    image: postgres:latest
+    container_name: postgres_liga_sudoers_sql
+    environment:
+      POSTGRES_USER: sudoers
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: liga_sudoers
+    ports:
+      - "5434:5432"
+    volumes:
+      - pgdata_liga_sudoers:/var/lib/postgresql/data
+      - ./ddl/liga_sudoers.sql:/docker-entrypoint-initdb.d/liga_sudoers.sql
+
+
+volumes:
+  pgdata_liga_sudoers:
