@@ -3,7 +3,7 @@ Bem-vindo ao Mapa do Engenheiro de Dados, um programa prático e desafiador que 
 
 Ao longo do curso, você aprenderá os fundamentos e aplicará técnicas avançadas de SQL, desenvolvendo consultas transacionais e analíticas em SQL, alcançando um nível de maestria.
 
-# Liga Sudoers - Dados Transacionais e Dados Dimensionais
+# Liga Sudoers - Treinamento SQL
 
 Este repositório visa possui uma estrutura para aprendizado do SQL
   * 1 ambiente PostgreSQL 
