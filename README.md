@@ -72,6 +72,8 @@ docker exec -it postgres_liga_sudoers_sql bash
 psql -U sudoers -d liga_sudoers -h postgres_liga_sudoers
 ```
 
+Senha: password
+
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.

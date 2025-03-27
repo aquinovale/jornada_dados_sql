@@ -2,12 +2,13 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.17 (Ubuntu 14.17-0ubuntu0.22.04.1)
--- Dumped by pg_dump version 14.17 (Ubuntu 14.17-0ubuntu0.22.04.1)
+-- Dumped from database version 17.4 (Debian 17.4-1.pgdg120+2)
+-- Dumped by pg_dump version 17.4 (Debian 17.4-1.pgdg120+2)
 
 CREATE TABLE public.a (
     a boolean
 );
+
 
 ALTER TABLE public.a OWNER TO sudoers;
 
@@ -20,23 +21,64 @@ CREATE TABLE public.b (
 ALTER TABLE public.b OWNER TO sudoers;
 
 
+CREATE TABLE public.datas (
+    id integer NOT NULL,
+    data date,
+    horario time without time zone,
+    datahorario timestamp without time zone
+);
+
+
+ALTER TABLE public.datas OWNER TO sudoers;
+
+
+CREATE SEQUENCE public.datas_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.datas_id_seq OWNER TO sudoers;
+
+
+ALTER SEQUENCE public.datas_id_seq OWNED BY public.datas.id;
+
+
 CREATE TABLE public.impares (
     id integer
 );
-
 
 ALTER TABLE public.impares OWNER TO sudoers;
 
 
 CREATE TABLE public.notas (
     cpf bigint,
-    id serial NOT NULL,
+    id integer NOT NULL,
     tentativa1 integer,
     tentativa2 integer
 );
 
 
 ALTER TABLE public.notas OWNER TO sudoers;
+
+
+CREATE SEQUENCE public.notas_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.notas_id_seq OWNER TO sudoers;
+
+
+ALTER SEQUENCE public.notas_id_seq OWNED BY public.notas.id;
+
 
 
 CREATE TABLE public.pares (
@@ -58,6 +100,29 @@ CREATE TABLE public.pessoas (
 ALTER TABLE public.pessoas OWNER TO sudoers;
 
 
+CREATE TABLE public.pessoas2 (
+    cpf bigint,
+    nome character varying(100),
+    sexo character(1)
+);
+
+
+ALTER TABLE public.pessoas2 OWNER TO sudoers;
+
+
+CREATE TABLE public.salarios (
+    cpf bigint NOT NULL,
+    depart character varying(20),
+    salario numeric(10,2)
+);
+
+
+ALTER TABLE public.salarios OWNER TO sudoers;
+
+
+ALTER TABLE ONLY public.datas ALTER COLUMN id SET DEFAULT nextval('public.datas_id_seq'::regclass);
+
+
 ALTER TABLE ONLY public.notas ALTER COLUMN id SET DEFAULT nextval('public.notas_id_seq'::regclass);
 
 
@@ -65,6 +130,19 @@ COPY public.a (a) FROM stdin;
 t
 f
 \.
+
+
+COPY public.b (b) FROM stdin;
+\.
+
+
+
+COPY public.datas (id, data, horario, datahorario) FROM stdin;
+1	2016-05-28	16:19:58.59299	2016-05-28 16:16:58.59299
+2	2016-05-28	16:21:20.330464	2016-05-28 16:21:20.330464
+3	2016-05-27	16:22:46.878812	2016-05-28 16:22:46.878812
+\.
+
 
 
 COPY public.impares (id) FROM stdin;
@@ -75,6 +153,7 @@ COPY public.impares (id) FROM stdin;
 7
 9
 \.
+
 
 
 COPY public.notas (cpf, id, tentativa1, tentativa2) FROM stdin;
@@ -111,6 +190,8 @@ COPY public.pares (id) FROM stdin;
 8
 \.
 
+
+
 COPY public.pessoas (cpf, nome, dt_nast, sexo) FROM stdin;
 12345678900	Administrador	1985-10-01	M
 32345678931	Anne Frank	1929-06-12	F
@@ -126,5 +207,32 @@ COPY public.pessoas (cpf, nome, dt_nast, sexo) FROM stdin;
 \.
 
 
+COPY public.pessoas2 (cpf, nome, sexo) FROM stdin;
+\.
+
+
+COPY public.salarios (cpf, depart, salario) FROM stdin;
+12345678900	Central	1001.15
+32345678931	RH	800.23
+22345678922	Central	1009.06
+3234567893	Loja	908.99
+44345678944	Loja	909.12
+340008999	Loja	909.29
+43445678944	RH	802.15
+88345678999	Central	1005.36
+24345678944	Central	1002.43
+\.
+
+
+
+SELECT pg_catalog.setval('public.datas_id_seq', 3, true);
+
 SELECT pg_catalog.setval('public.notas_id_seq', 1, false);
+
+
+ALTER TABLE ONLY public.datas
+    ADD CONSTRAINT datas_pkey PRIMARY KEY (id);
+
+ALTER TABLE ONLY public.salarios
+    ADD CONSTRAINT salarios_pkey PRIMARY KEY (cpf);
 
