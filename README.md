@@ -10,6 +10,8 @@ Este repositório visa possui uma estrutura para aprendizado do SQL
     
   [Curso SQL](https://www.youtube.com/watch?v=aQd5_vcn18U&list=PLD3-a_5KsN3nuXukrq8kCYtxnZR4FD2nJ)
 
+  [Aula 01](https://www.youtube.com/watch?v=Y6LnIujlbhc&list=PLD3-a_5KsN3nuXukrq8kCYtxnZR4FD2nJ&index=10)
+
 ## Perfil e responsabilidades
 
 Perfis de profissionais e suas responsabilidades no dia a dia dos processos mostrados.  
