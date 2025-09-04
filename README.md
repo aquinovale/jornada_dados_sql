@@ -43,16 +43,20 @@ Não precisa instalar PostgreSQL local nem configurar nada complicado.
 
 ## 🚀 Como começar
 
+
 ```bash
 # 1. Clone este repositório
 git clone https://github.com/aquinovale/jornada_dados_sql
 cd jornada_dados_sql
 
-# 2. Suba o container (executa o DDL automaticamente na 1ª vez)
+# 2. Configure variáveis de ambiente (usuário/senha/banco)
+cp .env.example .env
+
+# 3. Suba o container (roda o DDL automaticamente na 1ª vez)
 docker compose up -d --build
 
 
-### Parar o Docker Compose caso esteja rodando
+# 4. Pare o container (Quando não quiser mais usar)
 ```bash
 docker compose stop
 ```

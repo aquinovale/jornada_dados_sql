@@ -5,7 +5,7 @@
 -- Dumped from database version 17.4 (Debian 17.4-1.pgdg120+2)
 -- Dumped by pg_dump version 17.4 (Debian 17.4-1.pgdg120+2)
 
-CREATE TABLE public.a (
+CREATE TABLE IF NOT EXISTS public.a (
     a boolean
 );
 
@@ -13,7 +13,7 @@ CREATE TABLE public.a (
 ALTER TABLE public.a OWNER TO sudoers;
 
 
-CREATE TABLE public.b (
+CREATE TABLE IF NOT EXISTS public.b (
     b boolean
 );
 
@@ -21,7 +21,7 @@ CREATE TABLE public.b (
 ALTER TABLE public.b OWNER TO sudoers;
 
 
-CREATE TABLE public.datas (
+CREATE TABLE IF NOT EXISTS public.datas (
     id integer NOT NULL,
     data date,
     horario time without time zone,
@@ -32,7 +32,7 @@ CREATE TABLE public.datas (
 ALTER TABLE public.datas OWNER TO sudoers;
 
 
-CREATE SEQUENCE public.datas_id_seq
+CREATE TABLE IF NOT EXISTS public.datas_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -47,14 +47,14 @@ ALTER SEQUENCE public.datas_id_seq OWNER TO sudoers;
 ALTER SEQUENCE public.datas_id_seq OWNED BY public.datas.id;
 
 
-CREATE TABLE public.impares (
+CREATE TABLE IF NOT EXISTS public.impares (
     id integer
 );
 
 ALTER TABLE public.impares OWNER TO sudoers;
 
 
-CREATE TABLE public.notas (
+CREATE TABLE IF NOT EXISTS public.notas (
     cpf bigint,
     id integer NOT NULL,
     tentativa1 integer,
@@ -65,7 +65,7 @@ CREATE TABLE public.notas (
 ALTER TABLE public.notas OWNER TO sudoers;
 
 
-CREATE SEQUENCE public.notas_id_seq
+CREATE TABLE IF NOT EXISTS public.notas_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -81,7 +81,7 @@ ALTER SEQUENCE public.notas_id_seq OWNED BY public.notas.id;
 
 
 
-CREATE TABLE public.pares (
+CREATE TABLE IF NOT EXISTS public.pares (
     id integer
 );
 
@@ -89,7 +89,7 @@ CREATE TABLE public.pares (
 ALTER TABLE public.pares OWNER TO sudoers;
 
 
-CREATE TABLE public.pessoas (
+CREATE TABLE IF NOT EXISTS public.pessoas (
     cpf bigint NOT NULL,
     nome character varying(100),
     dt_nast date,
@@ -100,7 +100,7 @@ CREATE TABLE public.pessoas (
 ALTER TABLE public.pessoas OWNER TO sudoers;
 
 
-CREATE TABLE public.pessoas2 (
+CREATE TABLE IF NOT EXISTS public.pessoas2 (
     cpf bigint,
     nome character varying(100),
     sexo character(1)
@@ -110,7 +110,7 @@ CREATE TABLE public.pessoas2 (
 ALTER TABLE public.pessoas2 OWNER TO sudoers;
 
 
-CREATE TABLE public.salarios (
+CREATE TABLE IF NOT EXISTS public.salarios (
     cpf bigint NOT NULL,
     depart character varying(20),
     salario numeric(10,2)
