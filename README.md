@@ -27,40 +27,30 @@ Criação de Dashboards
             Definir métricas e KPIs com base nos requisitos de negócios.
             Trabalhar diretamente com as partes interessadas para transformar dados em insights acionáveis.
 
-## Pré-requisitos
 
-- Python 3.x
-- Docker e Docker Compose
+## 🎯 Objetivo
+Em **2 passos** você terá o banco PostgreSQL rodando localmente com tabelas e dados de exemplo prontos para praticar.  
+Não precisa instalar PostgreSQL local nem configurar nada complicado.
+
+---
+
+## 📦 Pré-requisitos
+- [Docker Desktop](https://www.docker.com/products/docker-desktop) (Windows/Mac) ou Docker Engine (Linux)  
+- Docker Compose (já incluso no Docker Desktop)  
+- ~2 GB livres em disco  
 
 
-### Instalação do Docker Compose
+
+## 🚀 Como começar
+
 ```bash
-sudo apt update
-sudo apt install docker-compose-plugin
-```
+# 1. Clone este repositório
+git clone https://github.com/aquinovale/jornada_dados_sql
+cd jornada_dados_sql
 
-### Verificação da Versão (opcional)
-```bash
-docker compose version
-```
+# 2. Suba o container (executa o DDL automaticamente na 1ª vez)
+docker compose up -d --build
 
-### Parar o PostgreSQL se estiver usando na máquina local (opcional)
-```bash
-sudo systemctl stop postgresql
-```
-
-
-## Como Executar
-
-### Iniciar Docker pela primeira vez (somente a primeira vez que rodar o processo)
-```bash
-docker compose up --build
-```
-
-### Iniciar Docker pela segunda vez
-```bash
-docker compose up 
-```
 
 ### Parar o Docker Compose caso esteja rodando
 ```bash
