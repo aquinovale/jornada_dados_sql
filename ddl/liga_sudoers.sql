@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS public.datas (
 ALTER TABLE public.datas OWNER TO sudoers;
 
 
-CREATE TABLE IF NOT EXISTS public.datas_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.datas_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS public.notas (
 ALTER TABLE public.notas OWNER TO sudoers;
 
 
-CREATE TABLE IF NOT EXISTS public.notas_id_seq
+CREATE SEQUENCE IF NOT EXISTS public.notas_id_seq
     AS integer
     START WITH 1
     INCREMENT BY 1
